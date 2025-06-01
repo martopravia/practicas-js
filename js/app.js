@@ -1,3 +1,4 @@
+// 28 ejercicios 8 kyu
 //1) escribir f(x) que reciba str y lo devuelva invertido
 function reverse(str) {
   return str.split("").reverse().join("");
@@ -465,3 +466,228 @@ function theSmallest3(arr) {
   return min;
 }
 console.log(theSmallest3([-5, 7, 999, -42, 0, 5]));
+
+// 21) convertir un string a mayusculas
+function toUpper(str) {
+  return str.toUpperCase();
+}
+console.log(toUpper("hola"));
+
+function toUpper2(str) {
+  let newStr = "";
+  for (let i = 0; i < str.length; i++) {
+    newStr += str[i].toUpperCase();
+  }
+  return newStr;
+}
+console.log(toUpper2("hola"));
+
+function toUpper3(str) {
+  let newStr = "";
+  for (let char of str) {
+    newStr += char.toUpperCase();
+  }
+  return newStr;
+}
+console.log(toUpper3("hola"));
+
+// 22) realizar operaciones matematicas entre 2 valores
+function mathOp(operator, val1, val2) {
+  switch (operator) {
+    case "+":
+      return val1 + val2;
+    case "-":
+      return val1 - val2;
+    case "/":
+      return val1 / val2;
+    case "*":
+      return val1 * val2;
+    case "%":
+      return val1 % val2;
+  }
+}
+console.log(mathOp("+", 2, 5));
+
+function mathOp2(operator, val1, val2) {
+  if (operator === "+") return val1 + val2;
+  if (operator === "-") return val1 - val2;
+  if (operator === "*") return val1 * val2;
+  if (operator === "/") return val1 / val2;
+  if (operator === "%") return val1 % val2;
+}
+console.log(mathOp2("+", 2, 5));
+
+// 23) devolver el numero opuesto
+function theNegative(num) {
+  return -num;
+}
+console.log(theNegative(4));
+console.log(theNegative(-7));
+
+function theNegative2(num) {
+  return num * -1;
+}
+console.log(theNegative2(4));
+console.log(theNegative2(-7));
+
+// 24) devolver el numero negativo únicamente
+function negativeNum(num) {
+  return num > 0 ? -num : num;
+}
+console.log(negativeNum(4));
+console.log(negativeNum(-7));
+
+// 25) contar cuantos valores true hay en un array
+function countTrue(arr) {
+  return arr.filter(Boolean).length;
+}
+console.log(countTrue([true, true, false]));
+
+function countTrue2(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === true) count++;
+  }
+  return count;
+}
+console.log(countTrue2([true, true, false]));
+
+function countTrue3(arr) {
+  let count = 0;
+  for (exp of arr) {
+    if (exp) count++;
+  }
+  return count;
+}
+console.log(countTrue3([true, true, false]));
+
+// 26) abreviar un nombre a las iniciales con . Ej Martin Pravia -> M. P.
+function abbreviate(str) {
+  return (
+    str
+      .split(" ")
+      .map((word) => word[0].toUpperCase())
+      .join(".") + "."
+  );
+}
+console.log(abbreviate("martin pravia"));
+
+function abbreviate2(str) {
+  let words = str.split(" ");
+  return words[0][0].toUpperCase() + "." + words[1][0].toUpperCase() + ".";
+}
+console.log(abbreviate2("martin pravia"));
+
+function abbreviate3(str) {
+  let newStr = "";
+  let strSplit = str.split(" ");
+  for (word of strSplit) {
+    newStr += word[0].toUpperCase() + ".";
+  }
+  return newStr;
+}
+console.log(abbreviate3("martin pravia"));
+
+// 27) remover espacios de un string
+function removeSpaces(str) {
+  return str.replaceAll(" ", "");
+}
+console.log(removeSpaces("hola me llamo martin"));
+
+function removeSpaces2(str) {
+  let newStr = "";
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== " ") {
+      newStr += str[i];
+    }
+  }
+  return newStr;
+}
+console.log(removeSpaces2("hola me llamo martin"));
+
+function removeSpaces3(str) {
+  let newStr = "";
+  for (let char of str) {
+    if (char !== " ") {
+      newStr += char;
+    }
+  }
+  return newStr;
+}
+console.log(removeSpaces3("hola me llamo martin"));
+
+// 28) duplicar un numero entero
+function duplicateNum(num) {
+  return num * 2;
+}
+console.log(duplicateNum(5));
+
+function duplicateNum2(num) {
+  let double = 1;
+  for (let i = 0; i < num; i++) {
+    double *= i * 2;
+  }
+  return double;
+}
+console.log(duplicateNum(6));
+
+// ejercicios 7 kyu
+
+// 1) devolver el caracter del medio si la longitud es impar o los dos caracteres del medio si es par en un string
+function middleChar(str) {
+  return str.length % 2 === 0
+    ? str[str.length / 2 - 1] + str[str.length / 2]
+    : str[Math.floor(str.length / 2)];
+}
+console.log(middleChar("hola"));
+console.log(middleChar("ola"));
+
+function middleChar2(str) {
+  if (str.length % 2 === 0) {
+    return str[str.length / 2 - 1] + str[str.length / 2];
+  } else {
+    return str[Math.floor(str.length / 2)];
+  }
+}
+console.log(middleChar2("hola"));
+console.log(middleChar2("ola"));
+
+// 2) devolver el numero mas alto y mas bajo de un string
+function highestAndLowest(str) {
+  let nums = str.split(" ").map(Number);
+  let max = Math.max(...nums);
+  let min = Math.min(...nums);
+  return `${max} ${min}`;
+}
+console.log(highestAndLowest("3 0 9 -55 125 19"));
+
+function highestAndLowest2(str) {
+  let numbers = str.split(" ").map(Number);
+  let min = 0;
+  let max = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] < min) min = numbers[i];
+    if (numbers[i] > max) max = numbers[i];
+  }
+  return `${max} ${min}`;
+}
+console.log(highestAndLowest2("3 0 9 -55 125 19"));
+
+// 3) transforma una cadena como "abcd" a A-Bb-Ccc-Dddd
+function mumbling(str) {
+  let result = "";
+  for (let i = 0; i < str.length; i++) {
+    result += str[i].toUpperCase() + str[i].toLowerCase().repeat(i);
+    if (i < str.length - 1) result += "-";
+  }
+  return result;
+}
+console.log(mumbling("hola"));
+
+function mumbling2(str) {
+  return str
+    .split("")
+    .map((word, index) => word.toUpperCase() + word.toLowerCase().repeat(index))
+    .join("-");
+}
+console.log(mumbling2("hola"));
